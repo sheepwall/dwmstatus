@@ -178,7 +178,6 @@ int
 main(void)
 {
 	char *status;
-	char *bat;
 	char *tmcal;
 	char *tmswe;
 
@@ -188,15 +187,12 @@ main(void)
 	}
 
 	for (;;sleep(60)) {
-		bat = getbattery("/sys/class/power_supply/BAT0");
 		tmcal = mktimes("%H:%M", tzcalifornia);
 		tmswe = mktimes("Week #%W, %a %d %b %H:%M %Z", tzsweden);
 
-		status = smprintf("[ %s ] [CALI: %s | SWE: %s]",
-				bat, tmcal, tmswe);
+		status = smprintf("[CALI: %s | SWE: %s]", tmcal, tmswe);
 		setstatus(status);
 
-		free(bat);
 		free(tmcal);
 		free(tmswe);
 		free(status);
