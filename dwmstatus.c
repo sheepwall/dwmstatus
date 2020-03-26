@@ -189,11 +189,11 @@ main(void)
 
 	for (;;sleep(60)) {
 		bat = getbattery("/sys/class/power_supply/BAT0");
+		tmswe = mktimes("%H:%M, %d %b", tzsweden);
 		tmcal = mktimes("%H:%M", tzcalifornia);
-		tmswe = mktimes("Week #%W, %a %d %b %H:%M %Z", tzsweden);
 
-		status = smprintf("[ %s ] [CALI: %s | SWE: %s]",
-				bat, tmcal, tmswe);
+		status = smprintf("[ %s ] [%s (CALI: %s)]",
+				bat, tmswe, tmcal);
 		setstatus(status);
 
 		free(bat);
