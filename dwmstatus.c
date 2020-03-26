@@ -187,10 +187,10 @@ main(void)
 	}
 
 	for (;;sleep(60)) {
+		tmswe = mktimes("%H:%M, %d %b", tzsweden);
 		tmcal = mktimes("%H:%M", tzcalifornia);
-		tmswe = mktimes("Week #%W, %a %d %b %H:%M %Z", tzsweden);
 
-		status = smprintf("[CALI: %s | SWE: %s]", tmcal, tmswe);
+		status = smprintf("[ %s ] [%s (CALI: %s)]", tmswe, tmcal);
 		setstatus(status);
 
 		free(tmcal);
