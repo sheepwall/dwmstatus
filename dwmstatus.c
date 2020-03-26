@@ -190,7 +190,7 @@ main(void)
 		tmswe = mktimes("%H:%M, %d %b", tzsweden);
 		tmcal = mktimes("%H:%M", tzcalifornia);
 
-		status = smprintf("[ %s ] [%s (CALI: %s)]", tmswe, tmcal);
+		status = smprintf("%s (CALI: %s)", tmswe, tmcal);
 		setstatus(status);
 
 		free(tmcal);
